@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Will You Go Out With Me?</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; padding-top: 50px; }
+        .icon { font-size: 50px; cursor: pointer; margin: 10px; }
+        .button { padding: 10px 20px; font-size: 18px; margin: 10px; cursor: pointer; }
+    </style>
+</head>
+<body>
+
+    <h1>🐱 Go out with me? 🐱</h1>
+    <button class="button" onclick="yesAnswer()">Yes</button>
+    <button class="button" onclick="noAnswer()">No</button>
+
+    <div id="next-step" style="display: none;">
+        <h2>Where :></h2>
+        <span class="icon" onclick="chooseLocation('Xpresso')">🌸</span>
+        <span class="icon" onclick="chooseLocation('Pepper Lunch')">🌼</span>
+    </div>
+
+    <div id="message" style="display: none;">
+        <h2 id="response-message"></h2>
+    </div>
+
+    <div id="final-step" style="display: none;">
+        <h2>see u soon luv u <3</h2>
+    </div>
+
+    <script>
+        function yesAnswer() {
+            document.getElementById("next-step").style.display = "block";
+        }
+
+        function noAnswer() {
+            document.getElementById("response-message").innerText = "Too bad, u have no choice!";
+            document.getElementById("next-step").style.display = "block";
+            document.getElementById("message").style.display = "block";
+        }
+
+        function chooseLocation(location) {
+            document.getElementById("response-message").innerText = location;
+            document.getElementById("next-step").style.display = "none";
+            document.getElementById("message").style.display = "block";
+            setTimeout(showFinalStep, 1500); // Wait 1.5 seconds, then show final message
+        }
+
+        function showFinalStep() {
+            document.getElementById("message").style.display = "none";
+            document.getElementById("final-step").style.display = "block";
+        }
+    </script>
+
+</body>
+</html>
